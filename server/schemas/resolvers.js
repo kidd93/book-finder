@@ -10,7 +10,7 @@ const resolvers = {
                     _id: context.user._id
                 })
                     .select('-__v -password')
-                    .populate('books');
+                    .populate('savedBooks');
 
                 return userData;
             }
@@ -47,23 +47,23 @@ const resolvers = {
             return { token, user };
         },
 
-        saveBook: async (parent, { bookData }, context) => {
+        saveBook: async (parent, args, context) => {
             if (context.user) {
                 const updatedUser = await User.findByIdAndUpdate(
-                    { _id: context.user_id },
-                    { $push: { savedBooks: { bookData } } },
-                    { new: true, runValidators: true }
-                );
-                return updatedUser;
-            }
+                  { _id: context.user_id },
+                  { $push: { savedBooks: args } },
+                    { new: true}
+                    );
+                    return updatedUser;
+                  }
             throw new AuthenticationError('You have to log in');
         },
 
-        removeBook: async (parent, { bookId }, context) => {
+        removeBook: async (parent, args, context) => {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $pull: { savedBooks: { bookId } } },
+                    { $pull: { savedBooks: { bookId: args.bookId } } },
                     { new: true }
                 );
                 return updatedUser;

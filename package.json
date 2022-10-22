@@ -13,18 +13,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^5.1.0",
-    "nodemon": "^2.0.20"
-  },
-  "dependencies": {
-    "apollo-server-express": "^3.10.3"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kidd93/book-finder.git"
-  },
-  "bugs": {
-    "url": "https://github.com/kidd93/book-finder/issues"
-  },
-  "homepage": "https://github.com/kidd93/book-finder#readme"
+    "concurrently": "^5.1.0"
+  }
 }
