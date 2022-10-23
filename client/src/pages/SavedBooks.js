@@ -15,29 +15,29 @@ const SavedBooks = () => {
   // use this to determine if `useEffect()` hook needs to run again
   const userData = data?.me || {};
 
-  // useEffect(() => {
-  //   const getUserData = async () => {
-  //     try {
-  //       const token = Auth.loggedIn() ? Auth.getToken() : null;
+//   useEffect(() => {
+//     const getUserData = async () => {
+//       try {
+//         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-  //       if (!token) {
-  //         return false;
-  //       }
+//         if (!token) {
+//           return false;
+//         }
 
-  //       const response = await GET_ME(token);
+//         const response = await GET_ME(token);
 
-  //       if (!response.ok) {
-  //         throw new Error('something went wrong!');
-  //       }
+//         if (!response.ok) {
+//           throw new Error('something went wrong!');
+//         }
 
-  //       const user = await response.json();
-  //       setUserData(user);
-  //     } catch (err) {
-  //       console.error(err);
-  //     }
-  //   };
+//         const user = await response.json();
+//         setUserData(user);
+//       } catch (err) {
+//         console.error(err);
+//       }
+//     };
 
-  // getUserData();
+//   getUserData();
 // }, [userDataLength]);
 
 // create function that accepts the book's mongo _id value as param and deletes the book from the database
@@ -78,7 +78,7 @@ return (
           : 'You have no saved books!'}
       </h2>
       <CardColumns>
-        {userData.savedBooks.map((book) => {
+        {userData.savedBooks?.map((book) => {
           return (
             <Card key={book.bookId} border='dark'>
               {book.image ? <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' /> : null}

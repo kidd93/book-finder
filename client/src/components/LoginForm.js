@@ -12,13 +12,13 @@ const LoginForm = () => {
 
 const [login, { error }] = useMutation(LOGIN_USER);
 
-useEffect(() => {
-  if (error) {
-    setShowAlert(true);
-  } else {
-    setShowAlert(false);
-  }
-}, [error]);
+// useEffect(() => {
+//   if (error) {
+//     setShowAlert(true);
+//   } else {
+//     setShowAlert(false);
+//   }
+// }, [error]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -39,6 +39,9 @@ useEffect(() => {
       const { data } =await login({
         variables: {...userFormData },
       })
+      console.log(data);
+      console.log(userFormData);
+      
 
       Auth.login(data.login.token);
 
