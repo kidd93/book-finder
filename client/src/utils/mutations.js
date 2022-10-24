@@ -40,8 +40,8 @@ export const SAVE_BOOK = gql`
              username
              email
              bookCount   
-                        }
         }
+}
 `;
 
 export const REMOVE_BOOK = gql`
